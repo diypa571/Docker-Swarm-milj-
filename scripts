@@ -1,0 +1,77 @@
+Demo commands... 
+Dont try to access the Private IPs, they are for demo only
+Will try to produce a bash script automating the installings for both maneger and the worker nodes
+1- Installing master
+
+# Update the package database
+sudo apt update
+
+# Install prerequisites
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+
+# Add Docker's official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Add Docker's official repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Update the package database again
+sudo apt update
+
+# Install Docker
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+
+
+sudo apt update
+sudo apt install -y docker.io
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+
+Master
+docker swarm init --advertise-addr 172.31.19.6
+
+
+
+Resultat:
+ubuntu@ip-172-31-19-6:~$ sudo docker swarm init --advertise-addr 172.31.19.6
+Swarm initialized: current node (rbyd600c73jbdrnoccs3gjm05) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+sudo docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+
+
+1- Installing Worker1 
+
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
+
+
+
+
+1- Installing Worker2
+
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
+
+
+
+
+
+
+
+
