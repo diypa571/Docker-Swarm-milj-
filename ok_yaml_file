@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  php-fpm:
+    image: php:8.3-fpm
+    deploy:
+      replicas: 2
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - php-fpm
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == ip-172-31-24-173 # Worker Node 1
+      replicas: 1
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_password
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == ip-172-31-21-171 # Worker Node 2
+      replicas: 1
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  db-data:
