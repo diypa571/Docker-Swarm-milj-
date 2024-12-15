@@ -69,7 +69,7 @@ sudo systemctl enable docker
 docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
 
 
-
-docker stack deploy -c docker-compose.yml my_php_app
+For themanager 
+docker stack deploy -c diyar-docker-compose.yml my_php_app
 
 
