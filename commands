@@ -70,6 +70,6 @@ docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j
 
 
 For themanager 
-docker stack deploy -c diyar-docker-compose.yml my_php_app
+docker stack deploy -c diyar-docker-compose.yml livia_app
 
 
