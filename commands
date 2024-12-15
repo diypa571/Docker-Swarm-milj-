@@ -79,3 +79,8 @@ sudo docker service ps livia_app_nginx
 sudo docker service ps livia_app_db
 sudo docker service ps livia_app_php-fpm
 
+
+if nano  not installed...
+apt update && apt install -y nano
+cd /usr/share/nginx/html
+
