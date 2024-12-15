@@ -10,3 +10,9 @@
 
  2- För worker node
 # docker swarm join --token <TOKEN> <MANAGER-IP>:2377
+
+
+3- Deploy
+# docker stack deploy -c docker-compose.yml my_php_app
+
+
