@@ -89,4 +89,6 @@ Bra komandon att  veta
 sudo docker swarm leave --force
 sudo docker swarm join --token <TOKEN> 172.31.19.6:2377
 *********************************************************
+sudo docker swarm join --token <TOKEN> 172.31.19.6:2377
+
 
