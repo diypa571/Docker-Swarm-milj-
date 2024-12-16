@@ -7,6 +7,8 @@ services:
       replicas: 2
     networks:
       - app-network
+    depends_on:
+      - db
 
   nginx:
     image: nginx:latest
@@ -41,6 +43,7 @@ services:
 
 networks:
   app-network:
+    driver: overlay
 
 volumes:
   db-data:
