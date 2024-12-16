@@ -93,3 +93,7 @@ sudo docker swarm join --token <TOKEN> 172.31.19.6:2377
 sudo docker node ls
 
 
+ sudo docker ps
+sudo docker exec -it CONTAINERID bash
+
+
