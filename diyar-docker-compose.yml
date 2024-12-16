@@ -28,7 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: app_db
       MYSQL_USER: root
-      MYSQL_PASSWORD: Diyar#Parwana29399##d
+      MYSQL_PASSWORD: DemoPass
     deploy:
       placement:
         constraints:
