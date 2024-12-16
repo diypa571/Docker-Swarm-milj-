@@ -41,7 +41,7 @@ Swarm initialized: current node (rbyd600c73jbdrnoccs3gjm05) is now a manager.
 
 To add a worker to this swarm, run the following command:
 
-sudo docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
+sudo docker swarm join --token DemoToken 172.31.19.6:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 
@@ -54,7 +54,7 @@ sudo apt install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
+docker swarm join --token DemoToken 172.31.19.6:2377
 
 
 
@@ -66,7 +66,7 @@ sudo apt install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-docker swarm join --token SWMTKN-1-4vbyblvvbm7h4nlqq8m58sy7tj2wh4b3j78izhrwz758j7zrxq-30rnkwdszh8ff0uu4y6z7ev84 172.31.19.6:2377
+docker swarm join --token DemoToken 172.31.19.6:2377
 
 
 For the manager 
