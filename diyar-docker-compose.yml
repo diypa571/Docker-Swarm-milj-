@@ -1,34 +1,23 @@
 version: "3.9"
 
 services:
-  php-fpm:
-    image: php:8.3-fpm
-    deploy:
-      replicas: 2
-    networks:
-      - app-network
-    depends_on:
-      - db
-    volumes:
-      - ./html:/var/www/html # Mount the application files
-
-  nginx:
-    image: nginx:latest
+  web:
+    image: custom-nginx-php:latest # Custom image with Nginx and PHP-FPM
     ports:
-      - "80:80"
-    depends_on:
-      - php-fpm
+      - "80:80" # Expose port 80
     deploy:
       placement:
         constraints:
-          - node.hostname == ip-172-31-24-173 # Worker Node 1
+          - node.hostname == ip-172-31-17-225 # Worker Node 1
       replicas: 1
     networks:
       - app-network
     volumes:
-      - ./html:/usr/share/nginx/html # Mount the application files
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf # Mount the Nginx config file
-
+      - ./html:/var/www/html # Application files
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf # Custom Nginx config
+    depends_on:
+      - db
+ 
   db:
     image: mysql:8.0
     environment:
@@ -39,7 +28,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == ip-172-31-21-171 # Worker Node 2
+          - node.hostname == ip-172-31-16-165 # Worker Node 2  http://172.31.16.165/
       replicas: 1
     volumes:
       - db-data:/var/lib/mysql
