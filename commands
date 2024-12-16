@@ -97,3 +97,28 @@ sudo docker node ls
 sudo docker exec -it CONTAINERID bash
 
 
+/etc/nginx/conf.d/default.conf
+server {
+    listen 80;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass php-fpm:9000; # Replace 'php-fpm' with the service name of your PHP-FPM container
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $document_root;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+
